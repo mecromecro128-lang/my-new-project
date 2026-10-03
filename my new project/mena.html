@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="جزائر ستور، منتجات مختارة وتوصيل إلى جميع الولايات">
+    <title>جزائر ستور | متجر إلكتروني</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+  <div class="announcement">توصيل سريع إلى 69 ولاية <span>•</span> الدفع عند الاستلام</div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="العودة إلى الرئيسية"><span>ج</span> جزائر ستور</a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <a class="active" href="#top">الرئيسية</a>
+      <a href="#products">المنتجات</a>
+      <a href="#about">قصتنا</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <div class="header-actions">
+      <a class="dashboard-link" href="dashboard.html">لوحة التحكم</a>
+      <button class="icon-button" id="searchToggle" aria-label="فتح البحث">⌕</button>
+      <button class="cart-button" id="cartButton" aria-label="فتح سلة المشتريات">السلة <strong id="cartCount">0</strong></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">تسوّق بثقة من متجرك الجزائري</p>
+        <h1>توصيل سريع وموثوق<br><em>إلى جميع ولايات الوطن.</em></h1>
+        <p class="hero-copy">اكتشف أحدث الهواتف والإلكترونيات والأحذية، ونوصل طلبك حتى باب دارك.</p>
+        <a class="primary-button" href="#products">اكتشف المنتجات <span>←</span></a>
+      </div>
+      <div class="hero-art" aria-label="خدمة توصيل الطلبات في الجزائر">
+        <img class="delivery-image" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=85" alt="شاحنة توصيل على الطريق">
+        <div class="floating-card">توصيل لكل الولايات<br><strong>طلبك يصلك حتى لباب دارك</strong></div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="مميزات جزائر ستور">
+      <div><span>✦</span><p><strong>منتجات منتقاة</strong><br>جودة نثق بها</p></div>
+      <div><span>↗</span><p><strong>توصيل سريع</strong><br>إلى جميع المدن</p></div>
+      <div><span>♡</span><p><strong>رضاك أولًا</strong><br>توصيل خلال 24 إلى 48 ساعة</p></div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section-heading"><div><p class="eyebrow">اختيارات هذا الأسبوع</p><h2>المنتجات الأكثر طلبًا</h2></div><a href="#products">عرض الكل <span>←</span></a></div>
+      <div class="toolbar">
+        <div class="filters" role="group" aria-label="تصفية المنتجات">
+          <button class="filter active" data-filter="all">الكل</button><button class="filter" data-filter="electronics">إلكترونيات</button><button class="filter" data-filter="fashion">أحذية وموضة</button>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث عن منتج..." aria-label="البحث عن منتج"></label>
+      </div>
+      <div class="product-grid" id="productGrid">
+        <article class="product-card" data-product-id="default-blue" data-category="electronics" data-name="هاتف سامسونغ غالاكسي"><div class="product-image blue"><span class="tag">الأكثر مبيعًا</span><img class="catalog-image" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85" alt="هاتف ذكي حديث" loading="lazy"></div><div class="product-info"><div><h3>هاتف سامسونغ غالاكسي</h3><p>ذاكرة 256 جيغا، ضمان سنة</p></div><strong>145,000 دج</strong></div><button class="add-button" data-product="هاتف سامسونغ غالاكسي" data-price="145000">أضف إلى السلة <span>+</span></button></article>
+        <article class="product-card" data-product-id="default-bag" data-category="electronics" data-name="حاسوب محمول ماك بوك"><div class="product-image cream"><span class="tag sale">عرض خاص</span><img class="catalog-image" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85" alt="حاسوب محمول مفتوح" loading="lazy"></div><div class="product-info"><div><h3>حاسوب محمول ماك بوك</h3><p>أداء سريع وتصميم خفيف</p></div><strong>190,000 دج</strong></div><button class="add-button" data-product="حاسوب محمول ماك بوك" data-price="190000">أضف إلى السلة <span>+</span></button></article>
+        <article class="product-card" data-product-id="default-candle" data-category="fashion" data-name="حذاء رياضي إير"><div class="product-image orange"><span class="tag">وصل حديثًا</span><img class="catalog-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85" alt="حذاء رياضي أحمر" loading="lazy"></div><div class="product-info"><div><h3>حذاء رياضي إير</h3><p>خفيف ومريح للاستعمال اليومي</p></div><strong>18,500 دج</strong></div><button class="add-button" data-product="حذاء رياضي إير" data-price="18500">أضف إلى السلة <span>+</span></button></article>
+      </div>
+      <p class="empty-state" id="emptyState" hidden>لم نجد منتجًا يطابق بحثك.</p>
+    </section>
+  </main>
+
+  <section class="product-details" id="productDetails" aria-label="تفاصيل المنتج" aria-hidden="true">
+    <button class="details-backdrop" type="button" data-close-details aria-label="إغلاق التفاصيل"></button>
+    <div class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="detailsName">
+      <button class="details-close" type="button" data-close-details aria-label="إغلاق التفاصيل">×</button>
+      <div class="details-gallery">
+        <div class="details-image-stage">
+          <button class="gallery-arrow previous" type="button" aria-label="الصورة السابقة">‹</button>
+          <img id="detailsImage" alt="">
+          <button class="gallery-arrow next" type="button" aria-label="الصورة التالية">›</button>
+          <span class="zoom-hint">اضغط للتكبير</span>
+        </div>
+        <div class="details-thumbnails" id="detailsThumbnails" aria-label="صور المنتج"></div>
+      </div>
+      <div class="details-copy">
+        <p class="eyebrow">تفاصيل المنتج</p>
+        <h2 id="detailsName"></h2>
+        <strong class="details-price" id="detailsPrice"></strong>
+        <p class="details-description" id="detailsDescription"></p>
+        <p class="details-stock" id="detailsStock"></p>
+        <button class="primary-button details-add" id="detailsAdd" type="button">أضف إلى السلة <span>+</span></button>
+      </div>
+    </div>
+  </section>
+  <aside class="cart-panel" id="cartPanel" aria-label="سلة المشتريات" aria-hidden="true"><div class="cart-header"><h2>سلة مشترياتك</h2><button id="closeCart" aria-label="إغلاق السلة">×</button></div><div id="cartItems" class="cart-items"><p class="empty-cart">السلة فارغة حاليًا.</p></div><div class="cart-footer"><div><span>الإجمالي</span><strong id="cartTotal">0 دج</strong></div><button class="primary-button checkout">إتمام الطلب <span>←</span></button></div></aside>
+  <div class="overlay" id="overlay"></div>
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+    <form class="checkout-form" id="checkoutForm">
+      <div class="checkout-heading"><div><p class="eyebrow">بيانات التوصيل</p><h2>أكمل طلبك</h2><p>أدخل بياناتك لاستلام الطلب.</p></div><button type="button" id="closeCheckout" aria-label="إغلاق النموذج">×</button></div>
+      <div class="checkout-grid">
+        <label>الاسم<input id="orderFirstName" type="text" autocomplete="given-name" required></label>
+        <label>اللقب<input id="orderLastName" type="text" autocomplete="family-name" required></label>
+        <label for="orderWilaya">الولاية<select id="orderWilaya" autocomplete="address-level1" required></select></label>
+        <label for="orderMunicipality">البلدية<select id="orderMunicipality" autocomplete="address-level2" required></select></label>
+      </div>
+      <label>رقم الهاتف<input id="orderPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx" required></label>
+      <p class="checkout-error" id="checkoutError" role="alert"></p>
+      <button class="primary-button checkout-submit" type="submit">تأكيد الطلب <span>←</span></button>
+    </form>
+  </div>
+  <div class="success-modal" id="successModal" aria-hidden="true">
+    <div class="success-panel" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="success-icon">✓</div>
+      <p class="eyebrow">تأكيد الطلب</p>
+      <h2 id="successTitle">تهانينا!</h2>
+      <p>لقد تم إتمام طلبك بنجاح، وسنتواصل معك قريبًا لتأكيد تفاصيل التوصيل.</p>
+      <button class="primary-button success-button" id="successClose" type="button">العودة إلى المتجر <span>←</span></button>
+    </div>
+  </div>
+  <footer id="contact"><div class="brand"><span>ج</span> جزائر ستور</div><p id="about">تسوّق بسهولة، ونوصل طلبك أينما كنت.</p><small>© 2026 جزائر ستور. جميع الحقوق محفوظة.</small></footer>
+  <script src="algerian-locations.js"></script>
+  <script>
+    const cart = [];
+    const count = document.getElementById('cartCount'), total = document.getElementById('cartTotal'), items = document.getElementById('cartItems');
+    const panel = document.getElementById('cartPanel'), overlay = document.getElementById('overlay');
+    const productDetails = document.getElementById('productDetails');
+    const detailsImage = document.getElementById('detailsImage');
+    const detailsImageStage = document.querySelector('.details-image-stage');
+    const detailsThumbnails = document.getElementById('detailsThumbnails');
+    const detailsName = document.getElementById('detailsName');
+    const detailsPrice = document.getElementById('detailsPrice');
+    const detailsDescription = document.getElementById('detailsDescription');
+    const detailsStock = document.getElementById('detailsStock');
+    const detailsAdd = document.getElementById('detailsAdd');
+    const checkoutModal = document.getElementById('checkoutModal'), checkoutForm = document.getElementById('checkoutForm');
+    const checkoutError = document.getElementById('checkoutError');
+    const orderWilaya = document.getElementById('orderWilaya');
+    const orderMunicipality = document.getElementById('orderMunicipality');
+    const successModal = document.getElementById('successModal');
+    const successClose = document.getElementById('successClose');
+    initializeAlgerianLocationSelects(orderWilaya, orderMunicipality);
+    function loadOrders() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novaOrders') || '[]');
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function saveOrder(order) { localStorage.setItem('novaOrders', JSON.stringify([order, ...loadOrders()])); }
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character]));
+    }
+    function loadSavedProducts(key, fallback) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(key) || fallback);
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function renderManagedProducts() {
+      const productGrid = document.getElementById('productGrid');
+      const deletedProducts = loadSavedProducts('novaDeletedProducts', '[]').map(String);
+      productGrid.querySelectorAll('[data-product-id]').forEach(card => {
+        if (deletedProducts.includes(String(card.dataset.productId))) card.remove();
+      });
+      const products = loadSavedProducts('novaProducts', '[]');
+      productGrid.insertAdjacentHTML('beforeend', products.map(product => {
+        const image = product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}">` : '<span class="uploaded-placeholder"></span>';
+        return `<article class="product-card" data-product-id="${escapeHtml(product.id)}" data-category="electronics" data-name="${escapeHtml(product.name)}"><div class="product-image uploaded">${image}</div><div class="product-info"><div><h3>${escapeHtml(product.name)}</h3><p>${escapeHtml(product.description || 'منتج جديد')}</p></div><strong>${Number(product.price).toLocaleString('en-US')} دج</strong></div><button class="add-button" data-product="${escapeHtml(product.name)}" data-price="${Number(product.price)}">أضف إلى السلة <span>+</span></button></article>`;
+      }).join(''));
+    }
+    renderManagedProducts();
+    let activeDetailsProduct = null;
+    let activeDetailsImages = [];
+    let activeDetailsImage = 0;
+    function selectDetailsImage(index) {
+      if (!activeDetailsImages.length) {
+        detailsImage.removeAttribute('src');
+        detailsImage.hidden = true;
+        return;
+      }
+      detailsImage.hidden = false;
+      activeDetailsImage = (index + activeDetailsImages.length) % activeDetailsImages.length;
+      detailsImage.src = activeDetailsImages[activeDetailsImage];
+      detailsImage.alt = activeDetailsProduct.name;
+      detailsImage.classList.remove('zoomed');
+      detailsThumbnails.querySelectorAll('button').forEach((button, buttonIndex) => {
+        button.classList.toggle('active', buttonIndex === activeDetailsImage);
+        button.setAttribute('aria-current', buttonIndex === activeDetailsImage ? 'true' : 'false');
+      });
+    }
+    function openProductDetails(card) {
+      const product = loadSavedProducts('novaProducts', '[]').find(item => String(item.id) === card.dataset.productId);
+      const fallbackImage = card.querySelector('.catalog-image')?.src || card.querySelector('.product-image img')?.src || '';
+      activeDetailsProduct = {
+        name: product?.name || card.dataset.name,
+        description: product?.description || card.querySelector('.product-info p')?.textContent || 'لا توجد معلومات إضافية.',
+        price: Number(product?.price ?? card.querySelector('.add-button')?.dataset.price ?? 0),
+        stock: product?.stock,
+        images: product?.images?.length ? product.images : product?.image ? [product.image] : fallbackImage ? [fallbackImage] : []
+      };
+      activeDetailsImages = activeDetailsProduct.images;
+      activeDetailsImage = 0;
+      detailsImageStage.classList.toggle('no-image', activeDetailsImages.length === 0);
+      detailsImageStage.querySelectorAll('.gallery-arrow').forEach(button => { button.hidden = activeDetailsImages.length < 2; });
+      detailsThumbnails.hidden = activeDetailsImages.length < 2;
+      detailsName.textContent = activeDetailsProduct.name;
+      detailsPrice.textContent = `${activeDetailsProduct.price.toLocaleString('en-US')} دج`;
+      detailsDescription.textContent = activeDetailsProduct.description;
+      detailsStock.textContent = activeDetailsProduct.stock == null ? 'متوفر للطلب' : `المخزون: ${Number(activeDetailsProduct.stock).toLocaleString('en-US')} قطعة`;
+      detailsThumbnails.replaceChildren();
+      activeDetailsImages.forEach((image, index) => {
+        const thumbnail = document.createElement('button');
+        thumbnail.type = 'button';
+        thumbnail.setAttribute('aria-label', `عرض الصورة ${index + 1}`);
+        thumbnail.dataset.imageIndex = index;
+        const thumbnailImage = document.createElement('img');
+        thumbnailImage.src = image;
+        thumbnailImage.alt = '';
+        thumbnail.append(thumbnailImage);
+        detailsThumbnails.append(thumbnail);
+      });
+      selectDetailsImage(0);
+      productDetails.classList.add('open');
+      productDetails.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('details-open');
+    }
+    function closeProductDetails() {
+      productDetails.classList.remove('open');
+      productDetails.setAttribute('aria-hidden', 'true');
+      detailsImage.classList.remove('zoomed');
+      document.body.classList.remove('details-open');
+    }
+    document.getElementById('productGrid').addEventListener('click', event => {
+      if (event.target.closest('.add-button')) return;
+      const image = event.target.closest('.product-image');
+      const card = image?.closest('.product-card');
+      if (card) openProductDetails(card);
+    });
+    productDetails.addEventListener('click', event => {
+      if (event.target.closest('[data-close-details]')) closeProductDetails();
+      if (event.target.closest('.previous')) selectDetailsImage(activeDetailsImage - 1);
+      if (event.target.closest('.next')) selectDetailsImage(activeDetailsImage + 1);
+      const thumbnail = event.target.closest('[data-image-index]');
+      if (thumbnail) selectDetailsImage(Number(thumbnail.dataset.imageIndex));
+    });
+    detailsImage.addEventListener('click', () => detailsImage.classList.toggle('zoomed'));
+    detailsAdd.addEventListener('click', () => {
+      cart.push({ name: activeDetailsProduct.name, price: activeDetailsProduct.price });
+      renderCart();
+      closeProductDetails();
+      panel.classList.add('open');
+      overlay.classList.add('visible');
+      panel.setAttribute('aria-hidden', 'false');
+    });
+    document.addEventListener('keydown', event => {
+      if (!productDetails.classList.contains('open')) return;
+      if (event.key === 'Escape') closeProductDetails();
+      if (event.key === 'ArrowLeft') selectDetailsImage(activeDetailsImage + 1);
+      if (event.key === 'ArrowRight') selectDetailsImage(activeDetailsImage - 1);
+    });
+    function renderCart() {
+      count.textContent = cart.length;
+      total.textContent = cart.reduce((sum, item) => sum + item.price, 0).toLocaleString('en-US') + ' دج';
+      items.innerHTML = cart.length ? cart.map((item, index) => `<div class="cart-item"><span>${item.name}</span><strong>${item.price.toLocaleString('en-US')} دج</strong><button onclick="removeItem(${index})" aria-label="حذف المنتج">×</button></div>`).join('') : '<p class="empty-cart">السلة فارغة حاليًا.</p>';
+    }
+    function removeItem(index) { cart.splice(index, 1); renderCart(); }
+    document.querySelectorAll('.add-button').forEach(button => button.addEventListener('click', () => { cart.push({ name: button.dataset.product, price: Number(button.dataset.price) }); renderCart(); panel.classList.add('open'); overlay.classList.add('visible'); panel.setAttribute('aria-hidden', 'false'); }));
+    function closeCart() { panel.classList.remove('open'); overlay.classList.remove('visible'); panel.setAttribute('aria-hidden', 'true'); }
+    function openCheckout() {
+      if (!cart.length) return;
+      checkoutError.textContent = '';
+      checkoutModal.classList.add('open');
+      checkoutModal.setAttribute('aria-hidden', 'false');
+      document.getElementById('orderFirstName').focus();
+    }
+    function closeCheckout() { checkoutModal.classList.remove('open'); checkoutModal.setAttribute('aria-hidden', 'true'); }
+    function openSuccessScreen() {
+      successModal.classList.add('open');
+      successModal.setAttribute('aria-hidden', 'false');
+    }
+    function closeSuccessScreen() {
+      successModal.classList.remove('open');
+      successModal.setAttribute('aria-hidden', 'true');
+    }
+    document.getElementById('cartButton').addEventListener('click', () => { panel.classList.add('open'); overlay.classList.add('visible'); panel.setAttribute('aria-hidden', 'false'); });
+    document.getElementById('closeCart').addEventListener('click', closeCart); overlay.addEventListener('click', closeCart);
+    document.querySelector('.checkout').addEventListener('click', openCheckout);
+    document.getElementById('closeCheckout').addEventListener('click', closeCheckout);
+    successClose.addEventListener('click', () => { closeSuccessScreen(); closeCart(); overlay.classList.remove('visible'); });
+    checkoutModal.addEventListener('click', event => { if (event.target === checkoutModal) closeCheckout(); });
+    successModal.addEventListener('click', event => { if (event.target === successModal) closeSuccessScreen(); });
+    checkoutForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!checkoutForm.checkValidity()) {
+        checkoutError.textContent = 'يرجى ملء جميع البيانات المطلوبة.';
+        checkoutForm.reportValidity();
+        return;
+      }
+      const order = {
+        id: `NV-${Date.now().toString().slice(-6)}`,
+        firstName: document.getElementById('orderFirstName').value.trim(),
+        lastName: document.getElementById('orderLastName').value.trim(),
+        wilaya: orderWilaya.selectedOptions[0].textContent,
+        wilayaCode: Number(orderWilaya.value),
+        municipality: orderMunicipality.value,
+        phone: document.getElementById('orderPhone').value.trim(),
+        items: cart.map(item => item.name),
+        total: cart.reduce((sum, item) => sum + item.price, 0),
+        createdAt: new Date().toLocaleDateString('ar-DZ'),
+        createdAtISO: new Date().toISOString(),
+        status: 'قيد التجهيز'
+      };
+      saveOrder(order);
+      cart.length = 0;
+      renderCart();
+      closeCheckout();
+      closeCart();
+      checkoutForm.reset();
+      openSuccessScreen();
+    });
+    const search = document.getElementById('searchInput'), filters = document.querySelectorAll('.filter');
+    function filterProducts() { const active = document.querySelector('.filter.active').dataset.filter, query = search.value.trim().toLowerCase(); let visible = 0; document.querySelectorAll('.product-card').forEach(card => { const show = (active === 'all' || card.dataset.category === active) && card.dataset.name.toLowerCase().includes(query); card.hidden = !show; if (show) visible++; }); document.getElementById('emptyState').hidden = visible !== 0; }
+    filters.forEach(filter => filter.addEventListener('click', () => { filters.forEach(item => item.classList.remove('active')); filter.classList.add('active'); filterProducts(); })); search.addEventListener('input', filterProducts);
+    document.getElementById('searchToggle').addEventListener('click', () => { search.focus(); search.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+  </script>
+</body>
+</html>

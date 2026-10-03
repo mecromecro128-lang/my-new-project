@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم | نوفا</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="logo"><span>ج</span> جزائر ستور</div>
+    <div class="admin-profile"><div class="avatar">ف</div><div><strong>فراس زين</strong><small>مدير المتجر</small></div></div>
+    <nav class="side-nav" aria-label="أقسام لوحة التحكم">
+      <button class="nav-item active" data-section="overview">▦ <span>نظرة عامة</span></button>
+      <button class="nav-item" data-section="orders">▤ <span>الطلبات</span><b>12</b></button>
+      <button class="nav-item" data-section="products">◇ <span>المنتجات</span></button>
+      <button class="nav-item" data-section="customers">♧ <span>العملاء</span></button>
+      <button class="nav-item" data-section="analytics">⌁ <span>التحليلات</span></button>
+    </nav>
+    <div class="side-bottom"><button class="nav-item">⚙ <span>الإعدادات</span></button><a class="back-store" href="mena.html">← العودة إلى المتجر</a></div>
+  </aside>
+  <div class="dashboard-shell">
+    <header class="topbar"><button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button><div><p class="date">الجمعة، 25 سبتمبر 2026</p><h1 id="pageTitle">نظرة عامة</h1></div><div class="top-actions"><button class="notification" aria-label="الإشعارات">♧<i></i></button><div class="top-avatar">ف</div></div></header>
+    <main>
+      <section class="section-view active" id="overview">
+        <div class="welcome-row"><div><h2>صباح الخير، فراس <span>✦</span></h2><p>إليك ملخص أداء جزائر ستور لهذا اليوم.</p></div><button class="primary-button" id="addProduct">+ إضافة منتج</button></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-icon green">↗</div><p>إجمالي المبيعات</p><h3><span id="totalSales">0</span> <small>دج</small></h3><span class="positive">من جميع الطلبات</span></article><article class="stat-card"><div class="stat-icon yellow">▤</div><p>إجمالي الطلبات</p><h3 id="totalOrders">0</h3><span class="positive">طلب مسجل في النظام</span></article><article class="stat-card"><div class="stat-icon blue">♧</div><p>العملاء النشطون</p><h3 id="activeCustomers">0</h3><span class="positive">عميل لديه طلب</span></article><article class="stat-card"><div class="stat-icon pink">◇</div><p>المنتجات</p><h3 id="totalProducts">0</h3><span class="positive">منتج متاح في المتجر</span></article></div>
+        <div class="content-grid"><article class="panel chart-panel"><div class="panel-heading"><div><h2>المبيعات</h2><p>إجمالي قيمة الطلبات خلال هذا الأسبوع</p></div><span class="chart-period">آخر 7 أيام</span></div><div class="chart"><div class="chart-labels" id="chartLabels"><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div><div class="chart-area"><div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 700 220" preserveAspectRatio="none" aria-label="رسم بياني للمبيعات خلال الأسبوع"><defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#d8ee66" stop-opacity=".65"/><stop offset="1" stop-color="#d8ee66" stop-opacity="0"/></linearGradient></defs><path class="area" id="chartAreaPath" d="M0,210 L700,210 V220 H0Z"/><path class="line" id="chartLinePath" d="M0,210 L700,210"/></svg><div class="chart-days" id="chartDays"></div></div></div></article><article class="panel top-products"><div class="panel-heading"><div><h2>المنتجات الأكثر مبيعًا</h2><p>حسب عدد القطع المطلوبة</p></div><a href="#products">عرض الكل</a></div><div id="topProductsList"></div></article></div>
+        <section class="panel orders-panel"><div class="panel-heading"><div><h2>آخر الطلبات</h2><p>تابع حالة الطلبات الأخيرة</p></div><button class="text-button" data-target="orders">عرض كل الطلبات ←</button></div><div class="table-wrap"><table><thead><tr><th>رقم الطلب</th><th>العميل</th><th>التاريخ</th><th>المبلغ</th><th>الحالة</th></tr></thead><tbody id="recentOrdersBody"></tbody></table></div></section>
+      </section>
+      <section class="section-view" id="orders"><div class="view-heading"><div><h2>الطلبات</h2><p>إدارة ومتابعة جميع طلبات العملاء.</p></div><button class="outline-button">تصدير البيانات ↓</button></div><div class="panel orders-panel"><div class="table-wrap"><table><thead><tr><th>رقم الطلب</th><th>العميل</th><th>رقم الهاتف</th><th>الولاية</th><th>البلدية</th><th>التاريخ</th><th>المنتجات</th><th>المبلغ</th><th>الحالة</th><th>الإجراء</th></tr></thead><tbody id="ordersTableBody"></tbody></table></div></div></section>
+      <section class="section-view" id="products"><div class="view-heading"><div><h2>المنتجات</h2><p>أضف منتجاتك وتابع المخزون.</p></div><button class="primary-button" id="addProductAlt">+ إضافة منتج</button></div><div class="product-admin-grid"><div class="admin-product panel" data-product-id="default-blue"><div class="admin-product-image blue"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=300&q=75" alt=""></div><div><strong>هاتف سامسونغ غالاكسي</strong><small>المخزون: 42 قطعة</small></div><b>145,000 دج</b><button type="button" class="delete-product" aria-label="حذف هاتف سامسونغ غالاكسي">حذف</button></div><div class="admin-product panel" data-product-id="default-bag"><div class="admin-product-image cream"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=300&q=75" alt=""></div><div><strong>حاسوب محمول ماك بوك</strong><small>المخزون: 18 قطعة</small></div><b>190,000 دج</b><button type="button" class="delete-product" aria-label="حذف حاسوب محمول ماك بوك">حذف</button></div><div class="admin-product panel" data-product-id="default-candle"><div class="admin-product-image orange"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=75" alt=""></div><div><strong>حذاء رياضي إير</strong><small>المخزون: 31 قطعة</small></div><b>18,500 دج</b><button type="button" class="delete-product" aria-label="حذف حذاء رياضي إير">حذف</button></div></div></section>
+      <section class="section-view" id="customers">
+        <div class="view-heading"><div><h2>العملاء</h2><p>إدارة بيانات العملاء وتسجيلهم في النظام.</p></div><button class="primary-button" id="addCustomer">+ إضافة عميل</button></div>
+        <div class="panel"><div class="table-wrap"><table class="customer-table"><thead><tr><th>الاسم الكامل</th><th>رقم الهاتف</th><th>الولاية</th><th>البلدية</th><th>تاريخ الإضافة</th></tr></thead><tbody id="customerTableBody"><tr class="empty-row"><td colspan="5">لا توجد بيانات عميل حتى الآن.</td></tr></tbody></table></div></div>
+      </section>
+      <section class="section-view" id="analytics"><div class="view-heading"><div><h2>التحليلات</h2><p>ملخص سريع عن أداء متجرك.</p></div></div><div class="analytics-grid"><article class="panel analytics-card"><span class="stat-icon green">↗</span><p>إجمالي المبيعات</p><strong id="analyticsSales">0 دج</strong><small>قيمة جميع الطلبات</small></article><article class="panel analytics-card"><span class="stat-icon yellow">▤</span><p>إجمالي عدد الطلبات</p><strong id="analyticsOrderCount">0</strong><small>طلب مسجل في النظام</small></article><article class="panel analytics-card"><span class="stat-icon blue">♧</span><p>العملاء النشطون</p><strong id="analyticsCustomers">0</strong><small>عميل لديه طلب</small></article><article class="panel analytics-card"><span class="stat-icon pink">◇</span><p>المنتجات</p><strong id="analyticsProducts">0</strong><small>منتج متاح في المتجر</small></article></div></section>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="productModal" aria-hidden="true"><form class="product-form" id="productForm"><div class="modal-heading"><div><h2>إضافة منتج جديد</h2><p>أدخل بيانات المنتج ليظهر في قائمة المنتجات.</p></div><button type="button" class="close-modal" id="closeModal" aria-label="إغلاق النموذج">×</button></div><label for="productName">اسم المنتج</label><input id="productName" type="text" placeholder="مثال: دفتر ملاحظات" required><label for="productDescription">وصف المنتج</label><textarea id="productDescription" placeholder="اكتب وصفًا مختصرًا للمنتج" rows="3"></textarea><div class="form-grid"><div><label for="productPrice">السعر</label><div class="price-input"><input id="productPrice" type="number" min="1" step="0.01" placeholder="0" required><span>DA</span></div></div><div><label for="productStock">المخزون</label><input id="productStock" type="number" min="0" step="1" placeholder="0" required></div></div><label for="productImage">صور المنتج (حتى 5 صور)</label><input id="productImage" type="file" accept="image/*" multiple><div class="image-preview" id="imagePreview" hidden></div><p class="form-error" id="formError" role="alert"></p><div class="form-actions"><button type="button" class="outline-button" id="cancelModal">إلغاء</button><button type="submit" class="primary-button">حفظ المنتج</button></div></form></div>
+  <div class="modal-backdrop" id="customerModal" aria-hidden="true"><form class="product-form customer-form" id="customerForm"><div class="modal-heading"><div><h2>إضافة عميل جديد</h2><p>أدخل بيانات العميل بشكل كامل.</p></div><button type="button" class="close-modal" id="closeCustomerModal" aria-label="إغلاق النموذج">×</button></div><div class="form-grid"><div><label for="customerFirstName">الاسم</label><input id="customerFirstName" type="text" placeholder="مثال: أحمد" required></div><div><label for="customerLastName">اللقب</label><input id="customerLastName" type="text" placeholder="مثال: الزهراني" required></div></div><div class="form-grid"><div><label for="customerPhone">رقم الهاتف</label><input id="customerPhone" type="tel" inputmode="numeric" placeholder="05xxxxxxxx" required></div><div><label for="customerWilaya">الولاية</label><select id="customerWilaya" required></select></div></div><label for="customerMunicipality">البلدية</label><select id="customerMunicipality" required></select><p class="form-error" id="customerFormError" role="alert"></p><div class="form-actions"><button type="button" class="outline-button" id="cancelCustomerModal">إلغاء</button><button type="submit" class="primary-button">حفظ العميل</button></div></form></div>
+  <div class="toast" id="toast"></div>
+  <script src="algerian-locations.js"></script>
+  <script>
+    const navItems = document.querySelectorAll('.nav-item[data-section]');
+    const views = document.querySelectorAll('.section-view');
+    const title = document.getElementById('pageTitle');
+    const labels = { overview: 'نظرة عامة', orders: 'الطلبات', products: 'المنتجات', customers: 'العملاء', analytics: 'التحليلات' };
+    function showSection(section) { navItems.forEach(item => item.classList.toggle('active', item.dataset.section === section)); views.forEach(view => view.classList.toggle('active', view.id === section)); title.textContent = labels[section]; }
+    navItems.forEach(item => item.addEventListener('click', () => { showSection(item.dataset.section); document.getElementById('sidebar').classList.remove('open'); }));
+    document.querySelectorAll('[data-target]').forEach(button => button.addEventListener('click', () => showSection(button.dataset.target)));
+    const toast = document.getElementById('toast');
+    const modal = document.getElementById('productModal');
+    const productForm = document.getElementById('productForm');
+    const productName = document.getElementById('productName');
+    const productDescription = document.getElementById('productDescription');
+    const productPrice = document.getElementById('productPrice');
+    const productStock = document.getElementById('productStock');
+    const productImage = document.getElementById('productImage');
+    const imagePreview = document.getElementById('imagePreview');
+    const imagePreviewUrls = [];
+    const formError = document.getElementById('formError');
+    const customerModal = document.getElementById('customerModal');
+    const customerForm = document.getElementById('customerForm');
+    const customerFirstName = document.getElementById('customerFirstName');
+    const customerLastName = document.getElementById('customerLastName');
+    const customerPhone = document.getElementById('customerPhone');
+    const customerWilaya = document.getElementById('customerWilaya');
+    const customerMunicipality = document.getElementById('customerMunicipality');
+    initializeAlgerianLocationSelects(customerWilaya, customerMunicipality);
+    const customerFormError = document.getElementById('customerFormError');
+    const customerTableBody = document.getElementById('customerTableBody');
+    const recentOrdersBody = document.getElementById('recentOrdersBody');
+    const ordersTableBody = document.getElementById('ordersTableBody');
+    const ordersCount = document.querySelector('.nav-item[data-section="orders"] b');
+    const analyticsOrderCount = document.getElementById('analyticsOrderCount');
+    const totalSales = document.getElementById('totalSales');
+    const totalOrders = document.getElementById('totalOrders');
+    const activeCustomers = document.getElementById('activeCustomers');
+    const totalProducts = document.getElementById('totalProducts');
+    const analyticsSales = document.getElementById('analyticsSales');
+    const analyticsCustomers = document.getElementById('analyticsCustomers');
+    const analyticsProducts = document.getElementById('analyticsProducts');
+    const defaultCustomers = [
+      { id: 1, firstName: 'أحمد', lastName: 'بن صالح', phone: '0551234567', city: 'الجزائر', municipality: 'باب الزوار', createdAt: '2026-09-20' },
+      { id: 2, firstName: 'سارة', lastName: 'قاسمي', phone: '0549876543', city: 'وهران', municipality: 'السانية', createdAt: '2026-09-21' }
+    ];
+    const defaultOrders = [
+      { id: 'NV-1048', firstName: 'سارة', lastName: 'أحمد', createdAt: 'اليوم، 10:24 ص', items: ['حاسوب محمول ماك بوك', 'حذاء رياضي إير'], total: 208500, status: 'تم الشحن' },
+      { id: 'NV-1047', firstName: 'محمد', lastName: 'علي', createdAt: 'اليوم، 09:12 ص', items: ['هاتف سامسونغ غالاكسي'], total: 145000, status: 'قيد التجهيز' },
+      { id: 'NV-1046', firstName: 'نورة', lastName: 'خالد', createdAt: 'أمس، 08:45 م', items: ['حذاء رياضي إير'], total: 18500, status: 'تم التوصيل' }
+    ];
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[character]));
+    }
+    function loadOrders() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novaOrders') || '[]');
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function formatNumber(value) { return Number(value).toLocaleString('en-US'); }
+    async function optimizeProductImage(file) {
+      if (typeof createImageBitmap !== 'function') throw new Error('Image processing is not supported');
+      const bitmap = await createImageBitmap(file);
+      const scale = Math.min(1, 1200 / Math.max(bitmap.width, bitmap.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(bitmap.width * scale);
+      canvas.height = Math.round(bitmap.height * scale);
+      const context = canvas.getContext('2d');
+      if (!context) {
+        bitmap.close();
+        throw new Error('Canvas is not available');
+      }
+      context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      bitmap.close();
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.78));
+      if (!blob) throw new Error('Image compression failed');
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => resolve(reader.result));
+        reader.addEventListener('error', reject);
+        reader.readAsDataURL(blob);
+      });
+    }
+    function loadDeletedOrders() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novaDeletedOrders') || '[]');
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function saveDeletedOrders(orderIds) { localStorage.setItem('novaDeletedOrders', JSON.stringify(orderIds)); }
+    function getAllOrders() {
+      const deletedOrders = loadDeletedOrders().map(String);
+      return [...loadOrders(), ...defaultOrders].filter(order => !deletedOrders.includes(String(order.id)));
+    }
+    function loadProducts() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novaProducts') || '[]');
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function saveProducts(products) { localStorage.setItem('novaProducts', JSON.stringify(products)); }
+    function loadDeletedProducts() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novaDeletedProducts') || '[]');
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function deleteProduct(id) {
+      const savedProducts = loadProducts().filter(product => String(product.id) !== String(id));
+      saveProducts(savedProducts);
+      const deletedProducts = loadDeletedProducts();
+      if (!deletedProducts.includes(id)) deletedProducts.push(id);
+      localStorage.setItem('novaDeletedProducts', JSON.stringify(deletedProducts));
+      document.querySelector(`[data-product-id="${CSS.escape(String(id))}"]`)?.remove();
+      renderStatistics();
+      showToast('تم حذف المنتج');
+    }
+    function productCard(product) {
+      const image = product.image ? `<img src="${product.image}" alt="${escapeHtml(product.name)}">` : '';
+      return `<div class="admin-product panel new-product" data-product-id="${escapeHtml(product.id)}"><div class="admin-product-image ${product.image ? 'has-image' : 'new-color'}">${image}</div><div><strong>${escapeHtml(product.name)}</strong><small>${escapeHtml(product.description || 'بدون وصف')}<br>المخزون: ${formatNumber(product.stock)} قطعة</small></div><b>${formatNumber(product.price)} دج</b><button type="button" class="delete-product" aria-label="حذف ${escapeHtml(product.name)}">حذف</button></div>`;
+    }
+    function renderProducts() {
+      const productGrid = document.querySelector('.product-admin-grid');
+      loadDeletedProducts().forEach(id => productGrid.querySelector(`[data-product-id="${CSS.escape(String(id))}"]`)?.remove());
+      productGrid.querySelectorAll('.new-product').forEach(product => product.remove());
+      productGrid.insertAdjacentHTML('afterbegin', loadProducts().map(productCard).join(''));
+      renderStatistics();
+    }
+    function orderStatusClass(status) { return status === 'تم الشحن' ? 'shipped' : status === 'تم التوصيل' ? 'delivered' : 'processing'; }
+    function orderRows(order, compact) {
+      const customer = `${escapeHtml(order.firstName)} ${escapeHtml(order.lastName)}`;
+      const items = escapeHtml((order.items || []).join('، '));
+      const itemLabel = order.items?.length === 1 ? 'منتج' : 'منتجات';
+      const phone = escapeHtml(order.phone || '—');
+      const wilaya = escapeHtml(order.wilaya || '—');
+      const municipality = escapeHtml(order.municipality || '—');
+      return compact
+        ? `<tr><td><strong>#${escapeHtml(order.id)}</strong></td><td>${customer}</td><td>${escapeHtml(order.createdAt)}</td><td>${formatNumber(order.total)} دج</td><td><span class="status ${orderStatusClass(order.status)}">${escapeHtml(order.status)}</span></td></tr>`
+        : `<tr><td><strong>#${escapeHtml(order.id)}</strong></td><td>${customer}</td><td dir="ltr">${phone}</td><td>${wilaya}</td><td>${municipality}</td><td>${escapeHtml(order.createdAt)}</td><td title="${items}">${formatNumber(order.items?.length || 0)} ${itemLabel}</td><td>${formatNumber(order.total)} دج</td><td><span class="status ${orderStatusClass(order.status)}">${escapeHtml(order.status)}</span></td><td><button type="button" class="delete-order" data-order-id="${escapeHtml(order.id)}">حذف</button></td></tr>`;
+    }
+    function renderOrders() {
+      const orders = getAllOrders();
+      recentOrdersBody.innerHTML = orders.slice(0, 3).map(order => orderRows(order, true)).join('');
+      ordersTableBody.innerHTML = orders.map(order => orderRows(order, false)).join('');
+      ordersCount.textContent = formatNumber(orders.length);
+      analyticsOrderCount.textContent = formatNumber(orders.length);
+      renderStatistics(orders);
+    }
+    function getOrderDate(order) {
+      const storedDate = order.createdAtISO || order.createdAt;
+      if (typeof storedDate !== 'string') return null;
+      if (storedDate.includes('اليوم')) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return today;
+      }
+      if (storedDate.includes('أمس')) {
+        const yesterday = new Date();
+        yesterday.setHours(0, 0, 0, 0);
+        yesterday.setDate(yesterday.getDate() - 1);
+        return yesterday;
+      }
+      const parts = storedDate.match(/\d+/g);
+      if (parts?.length >= 3) {
+        const [first, second, third] = parts.map(Number);
+        const date = first > 31 ? new Date(first, second - 1, third) : new Date(third, second - 1, first);
+        if (!Number.isNaN(date.getTime())) return new Date(date.setHours(0, 0, 0, 0));
+      }
+      const parsed = new Date(storedDate);
+      return Number.isNaN(parsed.getTime()) ? null : new Date(parsed.setHours(0, 0, 0, 0));
+    }
+    function renderStatistics(orders = getAllOrders()) {
+      const sales = orders.reduce((sum, order) => sum + (Number(order.total) || 0), 0);
+      const customerKeys = new Set(orders.map(order => order.phone || `${order.firstName || ''} ${order.lastName || ''}`.trim()).filter(Boolean));
+      const productCount = document.querySelectorAll('.product-admin-grid [data-product-id]').length;
+      totalSales.textContent = formatNumber(sales);
+      totalOrders.textContent = formatNumber(orders.length);
+      activeCustomers.textContent = formatNumber(customerKeys.size);
+      totalProducts.textContent = formatNumber(productCount);
+      analyticsSales.textContent = `${formatNumber(sales)} دج`;
+      analyticsCustomers.textContent = formatNumber(customerKeys.size);
+      analyticsProducts.textContent = formatNumber(productCount);
+      renderWeeklySales(orders);
+      renderTopProducts(orders);
+    }
+    function renderWeeklySales(orders) {
+      const labels = ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const weekStart = new Date(today);
+      weekStart.setDate(today.getDate() - ((today.getDay() + 1) % 7));
+      const totals = Array(7).fill(0);
+      orders.forEach(order => {
+        const date = getOrderDate(order);
+        if (!date) return;
+        const dayIndex = Math.round((date - weekStart) / 86400000);
+        if (dayIndex >= 0 && dayIndex < 7) totals[dayIndex] += Number(order.total) || 0;
+      });
+      const max = Math.max(...totals, 1);
+      const points = totals.map((value, index) => `${index * (700 / 6)},${210 - (value / max) * 190}`);
+      document.getElementById('chartLinePath').setAttribute('d', `M${points.join(' L')}`);
+      document.getElementById('chartAreaPath').setAttribute('d', `M${points.join(' L')} L700,220 L0,220Z`);
+      document.getElementById('chartLabels').innerHTML = [1, .75, .5, .25, 0].map(ratio => `<span>${formatNumber(Math.round(max * ratio))}</span>`).join('');
+      document.getElementById('chartDays').innerHTML = labels.map(label => `<span>${label}</span>`).join('');
+    }
+    function renderTopProducts(orders) {
+      const soldProducts = new Map();
+      orders.forEach(order => (order.items || []).forEach(item => {
+        const name = typeof item === 'string' ? item : item.name;
+        if (name) soldProducts.set(name, (soldProducts.get(name) || 0) + (Number(item.quantity) || 1));
+      }));
+      const topProducts = [...soldProducts].sort((first, second) => second[1] - first[1]).slice(0, 3);
+      document.getElementById('topProductsList').innerHTML = topProducts.length
+        ? topProducts.map(([name, quantity]) => `<div class="mini-product"><div class="mini-image"></div><div><strong>${escapeHtml(name)}</strong><small>${formatNumber(quantity)} قطعة مباعة</small></div></div>`).join('')
+        : '<p class="empty-products">لا توجد مبيعات مسجلة بعد.</p>';
+    }
+    function deleteOrder(id) {
+      const savedOrders = loadOrders().filter(order => String(order.id) !== String(id));
+      localStorage.setItem('novaOrders', JSON.stringify(savedOrders));
+      const deletedOrders = loadDeletedOrders();
+      if (!deletedOrders.map(String).includes(String(id))) deletedOrders.push(id);
+      saveDeletedOrders(deletedOrders);
+      renderOrders();
+      showToast('تم حذف الطلب');
+    }
+    function openProductModal() { modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); formError.textContent = ''; productName.focus(); }
+    function closeProductModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); productForm.reset(); clearImagePreview(); }
+    function openCustomerModal() { customerModal.classList.add('open'); customerModal.setAttribute('aria-hidden', 'false'); customerFormError.textContent = ''; customerFirstName.focus(); }
+    function closeCustomerModal() { customerModal.classList.remove('open'); customerModal.setAttribute('aria-hidden', 'true'); customerForm.reset(); }
+    function saveCustomers(customers) { localStorage.setItem('novaCustomers', JSON.stringify(customers)); }
+    function loadCustomers() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('novaCustomers') || 'null');
+        return Array.isArray(saved) && saved.length ? saved : defaultCustomers;
+      } catch {
+        return defaultCustomers;
+      }
+    }
+    function renderCustomers() {
+      const customers = loadCustomers();
+      if (!customers.length) {
+        customerTableBody.innerHTML = '<tr class="empty-row"><td colspan="5">لا توجد بيانات عميل حتى الآن.</td></tr>';
+        return;
+      }
+      customerTableBody.innerHTML = customers.map(customer => `
+        <tr>
+          <td>${escapeHtml(customer.firstName)} ${escapeHtml(customer.lastName)}</td>
+          <td>${escapeHtml(customer.phone)}</td>
+          <td>${escapeHtml(customer.wilaya || customer.city)}</td>
+          <td>${escapeHtml(customer.municipality)}</td>
+          <td>${escapeHtml(customer.createdAt || 'الآن')}</td>
+        </tr>
+      `).join('');
+    }
+    function showToast(message) { toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2200); }
+    function clearImagePreview() {
+      imagePreviewUrls.forEach(url => URL.revokeObjectURL(url));
+      imagePreviewUrls.length = 0;
+      imagePreview.replaceChildren();
+      imagePreview.hidden = true;
+    }
+    productImage.addEventListener('change', () => {
+      clearImagePreview();
+      const files = [...productImage.files];
+      if (files.length > 5 || files.some(file => !file.type.startsWith('image/'))) {
+        productImage.value = '';
+        formError.textContent = 'اختر حتى 5 ملفات صور فقط.';
+        return;
+      }
+      files.forEach(file => {
+        const url = URL.createObjectURL(file);
+        imagePreviewUrls.push(url);
+        const image = document.createElement('img');
+        image.src = url;
+        image.alt = 'معاينة صورة المنتج';
+        imagePreview.append(image);
+      });
+      imagePreview.hidden = files.length === 0;
+      formError.textContent = '';
+    });
+    document.querySelectorAll('#addProduct, #addProductAlt').forEach(button => button.addEventListener('click', openProductModal));
+    document.querySelector('.product-admin-grid').addEventListener('click', event => {
+      const deleteButton = event.target.closest('.delete-product');
+      if (!deleteButton) return;
+      const product = deleteButton.closest('[data-product-id]');
+      if (product && confirm('هل تريد حذف هذا المنتج؟')) deleteProduct(product.dataset.productId);
+    });
+    ordersTableBody.addEventListener('click', event => {
+      const deleteButton = event.target.closest('.delete-order');
+      if (deleteButton && confirm('هل تريد حذف هذا الطلب؟')) deleteOrder(deleteButton.dataset.orderId);
+    });
+    document.getElementById('addCustomer').addEventListener('click', openCustomerModal);
+    document.getElementById('closeModal').addEventListener('click', closeProductModal);
+    document.getElementById('cancelModal').addEventListener('click', closeProductModal);
+    document.getElementById('closeCustomerModal').addEventListener('click', closeCustomerModal);
+    document.getElementById('cancelCustomerModal').addEventListener('click', closeCustomerModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeProductModal(); });
+    customerModal.addEventListener('click', event => { if (event.target === customerModal) closeCustomerModal(); });
+    productForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const name = productName.value.trim();
+      const description = productDescription.value.trim();
+      const price = Number(productPrice.value);
+      const stock = Number(productStock.value);
+      if (!name || !Number.isFinite(price) || price <= 0 || !Number.isInteger(stock) || stock < 0) { formError.textContent = 'يرجى إدخال اسم المنتج وسعر صحيح ومخزون صحيح لا يقل عن صفر.'; return; }
+      const files = [...productImage.files];
+      const saveProduct = images => {
+        const products = loadProducts();
+        products.unshift({ id: Date.now(), name, description, price, stock, images, image: images[0] || '' });
+        saveProducts(products);
+        renderProducts();
+        closeProductModal();
+        showToast('تمت إضافة المنتج بنجاح');
+      };
+      Promise.all(files.map(optimizeProductImage))
+        .then(saveProduct)
+        .catch(error => {
+          formError.textContent = error?.name === 'QuotaExceededError'
+            ? 'مساحة التخزين ممتلئة. استخدم صورًا أصغر أو احذف بعض المنتجات.'
+            : 'تعذر تجهيز الصور أو حفظ المنتج. تحقق من الصور ثم حاول مجددًا.';
+        });
+    });
+    customerForm.addEventListener('submit', event => {
+      event.preventDefault();
+      const firstName = customerFirstName.value.trim();
+      const lastName = customerLastName.value.trim();
+      const phone = customerPhone.value.trim();
+      const wilaya = customerWilaya.selectedOptions[0]?.textContent || '';
+      const municipality = customerMunicipality.value.trim();
+      if (!firstName || !lastName || !phone || !customerWilaya.value || !municipality) {
+        customerFormError.textContent = 'يرجى ملء جميع الحقول: الاسم، اللقب، رقم الهاتف، الولاية، والبلدية.';
+        return;
+      }
+      const customers = loadCustomers();
+      customers.unshift({
+        id: Date.now(),
+        firstName,
+        lastName,
+        phone,
+        wilaya,
+        wilayaCode: Number(customerWilaya.value),
+        municipality,
+        createdAt: new Date().toLocaleDateString('en-GB')
+      });
+      saveCustomers(customers);
+      renderCustomers();
+      closeCustomerModal();
+      showToast('تمت إضافة العميل بنجاح');
+    });
+    document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('sidebar').classList.toggle('open'));
+    renderCustomers();
+    renderOrders();
+    renderProducts();
+  </script>
+</body>
+</html>
